@@ -22,9 +22,7 @@ def id_or_name(search):
         print(f"Type: {type1}")
         print(f"Type: {type2}")
 
-    #To do: Show generation origin
-
-    while True: #New menu
+    while True: #Make data verification
         print("\nSelect: \n1- See moves \n2- See abilities \n3- End search")
         a = int(input("\nAction: "))
 
