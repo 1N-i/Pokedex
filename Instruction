@@ -13,12 +13,17 @@ To Do:
             3.2.2- Show "1/2x damage from and to:"
             3.2.3- Show "No damage from and to:"
             3.2.4- Result should follow the example "fire -> grass -> water"
+        3.4- Search a pokémon by a secondary type
 
     4- Create the main Menu 
-        4.1- Include data verification in all options 
         4.2- Finalize styling 
         4.3- Interconnection between search systems 
         4.4- Ensure it is functional 
+
+    5- Search move
+        5.1- Show move description
+        5.2- Menu to see more options
+            5.2.1- Show Pokémon that can have this move
 
 Next To Do:
     3.2- Show moves of this type
@@ -40,3 +45,8 @@ Done:
     
     3- Search by type with menu
         3.1- Show which Pokémon have this type
+
+    4- Create the main Menu 
+        4.1- Include data verification in all options 
+
+    6- Make the transference of all functions in one archive
