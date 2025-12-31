@@ -119,14 +119,37 @@ def search_type(search): #Search specific type
 
 #-------------------------------------------------------------
 def search_move(search): #Search a move
+    search = src_msg = search.lower()
+    search = search.replace(" ", "-")
     data = create_data("move", search)
     if data == "error":
         return
     
-    #Data Verification
+    print(f"Effect: {data["effect_entries"][0]["effect"].replace("\n\n", "\n")}")
+    print(f"\nShort effect: {data["effect_entries"][0]["short_effect"].replace("\n\n", "\n")}")
+    print(f"\nDamage class: {data["damage_class"]["name"]}")
+    print(f"Power: {data["power"]}\nAccuracy: {data["accuracy"]}\nPP: {data["pp"]}\nType: {data["type"]["name"]}\n")
 
-    #To Do
-    pass
+    if data["priority"] != 0:
+        print(f"Priority: {data["priority"]}")
+
+    if data["stat_changes"] != []:
+        print(f"Stat changes: {data["stat_changes"][0]["change"]} {data["stat_changes"][0]["stat"]["name"]}")
+    print(f"Target: {data["target"]["name"]}\n")
+
+    while True:
+        print(f"Select: \n1- See pokémon that can learn {src_msg} \n2- End search")
+        action = data_verification([1, 2])
+
+        if action == 1: #Pokémon that can learn the move
+            print(f"\nPokémon that learns {src_msg}:")
+            for pokemon in data["learned_by_pokemon"]:
+                print(pokemon["name"])
+            print()
+
+        if action == 2: #End search
+            print(f"Ending search on '{src_msg}'")
+            break
 
 #-------------------------------------------------------------
 def search_ability(search):  #Search ability

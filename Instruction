@@ -1,28 +1,26 @@
 To Do: 
     1- Search Pokémon by name or ID 
         1.3- Show region of origin 
-            1.3.1- Show generation of origin 
+            1.3.1- Show generation of origin
         1.5- Make it work with regional versions
         1.6- Make it work with megas and gigantamax
         1.7- Show bst (Base Stat Total)
 
-    4- Create the main Menu 
-        4.2- Finalize styling 
-        4.3- Interconnection between search systems 
-        4.4- Ensure it is functional 
+    3- Search by type with menu
+        3.4- Search pokémon by secondary type
+            3.4.1- Solve bug on the 'search' being switched by the secondary type
 
-    5- Search move
-        5.1- Show move description
-            5.1.1- Show power, accuracy, pp, type, 
-            5.1.2- If it exist: Show priority and stat changes
-        5.2- Menu to see more options
-            5.2.1- Show Pokémon that can have this move
+    4- Create the main Menu
+        4.2- Finalize styling
+            4.2.1- Counts every print of data["something"]
+        4.3- Interconnection between search systems
+        4.4- Ensure it is functional
 
 Next To Do:
-    5- Search move
-        5.2- Menu to see more options
-            5.2.1- Show Pokémon that can have this move
-
+    3- Search by type with menu
+        3.4- Search pokémon by secondary type
+            3.4.1- Solve bug
+    
 Done: 
     1- Search Pokémon by name or ID 
         1.1- Show name and type 
@@ -50,5 +48,12 @@ Done:
 
     4- Create the main Menu 
         4.1- Include data verification in all options 
+
+    5- Search move
+        5.1- Show move description
+            5.1.1- Show effect, shor effect, damage class, power, accuracy, pp, type, 
+            5.1.2- If it exist: Show priority and stat changes
+        5.2- Menu to see more options
+            5.2.1- Show Pokémon that can have this move
 
     6- Make the transference of all functions in one archive
