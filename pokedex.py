@@ -1,9 +1,9 @@
-from search import search_id_or_name, search_type, search_move, search_ability
+from search import search_id_or_name, search_type, search_move, search_ability, random_page
 
 while True:
-    print("\nSelect: \n1- Search by name or ID")
-    print("2- Search by type \n3- Search move \n4- Search hability \n5- Finish Program")
-    options = [1, 2, 3, 4, 5]
+    print("\nSelect: \n1- Search by name or ID \n2- Search by type \n3- Search move")
+    print("4- Search hability \n5- See a random page \n6- Finish Program")
+    options = [1, 2, 3, 4, 5, 6]
 
     try: #Data verification
         e = int(input("Action: "))
@@ -29,7 +29,10 @@ while True:
     if e == 4: #Search specific ability
         search4 = input("\nAbility name: ")
         search_ability(search4)
+
+    if e == 5: #Random page
+        random_page()
         
-    if e == 5:
+    if e == 6:
         print("Ending program...") #End
         break

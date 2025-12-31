@@ -22,6 +22,9 @@ def data_verification(options): #Data verification
 
 #-------------------------------------------------------------
 def search_id_or_name(search): #Search Pokémon by name or ID
+    if isinstance(search, str):
+        search = search.lower()
+
     data = create_data("pokemon", search)
     if data == "error":
         return
@@ -59,12 +62,15 @@ def search_id_or_name(search): #Search Pokémon by name or ID
 
 #-------------------------------------------------------------
 def search_type(search): #Search specific type
-    search = search.lower()
-    data = create_data("type", search)
-    if data == "error":
-        return
+    if isinstance(search, str):
+        search = search.lower()
 
     while True:
+        data = create_data("type", search)
+        if data == "error":
+            return
+        search = data["name"]
+        
         print(f"\nSelect: \n1- See all {search} type pokémon \n2- See {search}:type pokémon")
         print(f"3- See {search} type moves \n4- See {search} type chart \n5- End search\n")
         action = data_verification([1, 2, 3, 4, 5])
@@ -118,24 +124,45 @@ def search_type(search): #Search specific type
             break
 
 #-------------------------------------------------------------
-def search_move(search): #Search a move
-    search = src_msg = search.lower()
-    search = search.replace(" ", "-")
+def search_move(search):
+    if isinstance(search, str):
+        search = search.lower().replace(" ", "-")
+
     data = create_data("move", search)
     if data == "error":
         return
     
-    print(f"Effect: {data["effect_entries"][0]["effect"].replace("\n\n", "\n")}")
-    print(f"\nShort effect: {data["effect_entries"][0]["short_effect"].replace("\n\n", "\n")}")
+    search = src_msg = data["name"]
+
+    effect = "None"
+    short_effect = "None"
+    if data["effect_entries"] != []:
+        effect = data["effect_entries"][0]["effect"].replace("\n\n", "\n").replace("  ", " ")
+        short_effect = data["effect_entries"][0]["short_effect"].replace("\n\n", "\n").replace("  ", " ")
+
+    elif data["flavor_text_entries"] != []:
+        effect = data["flavor_text_entries"][0]["flavor_text"]
+
+    print(f"\nMove: {data["name"]}")
+    print(f"Effect: \n{effect}")
+    print(f"\nShort effect: \n{short_effect}")
     print(f"\nDamage class: {data["damage_class"]["name"]}")
-    print(f"Power: {data["power"]}\nAccuracy: {data["accuracy"]}\nPP: {data["pp"]}\nType: {data["type"]["name"]}\n")
+
+    accuracy = data["accuracy"]
+    if data["accuracy"] == None:
+        accuracy = "-"
+    
+    print(f"Power: {data["power"]}\nAccuracy: {accuracy}\nPP: {data['pp']}\nType: {data['type']['name']}\n")
 
     if data["priority"] != 0:
         print(f"Priority: {data["priority"]}")
 
-    if data["stat_changes"] != []:
-        print(f"Stat changes: {data["stat_changes"][0]["change"]} {data["stat_changes"][0]["stat"]["name"]}")
-    print(f"Target: {data["target"]["name"]}\n")
+    if data["stat_changes"]:
+        change = data["stat_changes"][0]["change"]
+        stat_name = data["stat_changes"][0]["stat"]["name"]
+        print(f"Stat changes: {change} {stat_name}")
+    
+    print(f"Target: {data['target']['name']}\n")
 
     while True:
         print(f"Select: \n1- See pokémon that can learn {src_msg} \n2- End search")
@@ -153,16 +180,19 @@ def search_move(search): #Search a move
 
 #-------------------------------------------------------------
 def search_ability(search):  #Search ability
-    search = src_msg = search.lower()
-    search = search.replace(" ", "-")
+    if isinstance(search, str):
+        search = search.lower().replace(" ", "-")
 
     data = create_data("ability", search)
     if data == "error":
         return
+    
+    src_msg = data["name"]
+    print(f"\nAbility: {src_msg}")
 
     for ability in data["effect_entries"]:
         if ability["language"]["name"] == "en":
-            print(f"\nEffect: \n{ability["effect"].replace("\n\n", "\n")}")
+            print(f"Effect: \n{ability["effect"].replace("\n\n", "\n")}")
             print(f"\nShort version: \n{ability["short_effect"].replace("\n\n", "\n")}")
 
     while True:
@@ -183,3 +213,24 @@ def search_ability(search):  #Search ability
         if action == 2: #End search
             print(f"Ending search on '{src_msg}'")
             break
+
+#-------------------------------------------------------------
+def random_page():
+    from random import randrange
+    function = randrange(1,5)
+
+    if function == 1:
+        search1 = randrange(1,1026)
+        search_id_or_name(search1)
+
+    elif function == 2:
+        search2 = randrange(1,20)
+        search_type(search2)
+
+    elif function == 3:
+        search3 = randrange(1,920)
+        search_move(search3)
+
+    elif function == 4:
+        search4 = randrange(1,308)
+        search_ability(search4)
