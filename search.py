@@ -21,11 +21,33 @@ def data_verification(options): #Data verification
             print("Invalid action\n")
 
 #-------------------------------------------------------------
+def gen_traslate(generation):
+    if generation == "generation-i":
+        return "Kanto, generation 1"
+    elif generation == "generation-ii":
+        return "Johto, generation 2"
+    elif generation == "generation-iii":
+        return "Hoenn, generation 3"
+    elif generation == "generation-iv":
+        return "Sinnoh, generation 4"
+    elif generation == "generation-v":
+        return "Unova, generation 5"
+    elif generation == "generation-vi":
+        return "Kalos, generation 6"
+    elif generation == "generation-vii":
+        return "Alola, generation 7"
+    elif generation == "generation-viii":
+        return "Galar, generation 8"
+    elif generation == "generation-ix":
+        return "Paldea, generation 9"
+    
+#-------------------------------------------------------------
 def search_id_or_name(search): #Search Pokémon by name or ID
     if isinstance(search, str):
         search = search.lower()
 
     data = create_data("pokemon", search)
+    data_species = create_data("pokemon-species", search)
     if data == "error":
         return
 
@@ -42,9 +64,11 @@ def search_id_or_name(search): #Search Pokémon by name or ID
         print(f"Type: {type1}")
         print(f"Type: {type2}")
 
+    print(f"First appearence in {gen_traslate(data_species["generation"]["name"])}")
+
     while True:
-        print("\nSelect: \n1- See moves \n2- See abilities \n3- End search\n")
-        action = data_verification([1, 2, 3])
+        print("\nSelect: \n1- See moves \n2- See abilities \n3- See stats \n4- See pokédex descriptions \n5- End search\n")
+        action = data_verification([1, 2, 3, 4, 5])
 
         if action == 1: #Show moves
             print(f"\nMoves that {data["name"]} can learn:")
@@ -56,7 +80,13 @@ def search_id_or_name(search): #Search Pokémon by name or ID
             for ability in data["abilities"]:
                 print(ability["ability"]["name"])
 
-        if action == 3: #End search
+        if action == 3: #Show bst (Base Stat Total)
+            pass
+
+        if action == 4: #Show pokedex descriptions
+            pass
+
+        if action == 5: #End search
             print(f"\nEnding search on '{data["name"]}'")
             break
 
