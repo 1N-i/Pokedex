@@ -9,6 +9,8 @@ A Python-based Pokédex designed to display Pokémon data directly from the [Pok
 - [Technologies](#-technologies)
 - [Features](#-features)
 - [Project Architecture](#-project-architecture)
+- [What I learned](#-what-i-learned)
+- [Future Improvements](#-future-improvements)
 - [How to Run](#-how-to-run)
 
 ---
@@ -29,16 +31,28 @@ The project is organized into specific archives:
 * `search.py`: The "engine" of the project. It handles all the fetching logic, URL constructions, and API responses.
 * `Guide`: A guide containing everything you can do, and what each archive does.
 
+## 📚 What I Learned
+* **Consuming REST APIs:** How to handle nested JSONs and complex lists.
+
+## Future Improvements
+* [ ] Implementation of **Local Cache** (saving JSONs to disk to avoid repeated requests).
+* [ ] Graphical interface.
+* [ ] The option to search for mono-types
+* [ ] Be able to search by generation
+
 ## 🚀 How to Run
+
 1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/seu-usuario/pokedex-python.git](https://github.com/seu-usuario/pokedex-python.git)
-   cd pokedex-python
+Use the command below to clone the project and enter its folder:
+
+```bash 
+git clone https://github.com/1N-i/Pokedex_PokeAPI.git cd Pokedex_PokeAPI
+```
 
 2. **Install dependencies:**
    
    This project uses the requests library. You can install it via pip: `pip install requests`
 
-4. **Execute the application:**
+3. **Execute the application:**
 
    `python pokedex.py`
