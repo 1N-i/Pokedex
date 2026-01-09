@@ -34,7 +34,7 @@ The project is organized into specific archives:
 ## 📚 What I Learned
 * **Consuming REST APIs:** How to handle nested JSONs and complex lists.
 
-## Future Improvements
+## 🔮 Future Improvements
 * [ ] Implementation of **Local Cache** (saving JSONs to disk to avoid repeated requests).
 * [ ] Graphical interface.
 * [ ] The option to search for mono-types
