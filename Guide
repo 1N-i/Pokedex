@@ -1,0 +1,19 @@
+pokedex.py:
+    Main menu that calls all of the actions in 'search.py'
+        1- Search by name or ID 
+        2- Search by type 
+        3- Search move
+        4- Search hability 
+        5- See a random page 
+        6- Finish Program
+
+search.py:
+    Functions called by the 'pokedex.py'
+        1-
+
+    Called by the search functions:
+        1- create_data()
+            1.1- Function that creates and access the link required for each search
+
+        2- data_verification()
+            2.1- 
