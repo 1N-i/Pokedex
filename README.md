@@ -1,4 +1,4 @@
-# 🖥️ Pokédex - Python CLI Project
+# 🖥️ Pokédex - Python Project
 
 ![Python](https://img.shields.io/badge/python-3.x-blue?style=for-the-badge&logo=python)
 ![API](https://img.shields.io/badge/API-PokeAPI-red?style=for-the-badge)
