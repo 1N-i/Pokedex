@@ -305,17 +305,17 @@ def random_page(): #Sends you to a random page
     function = randrange(1,5)
 
     if function == 1:
-        search1 = randrange(1,1026) #Limit avaiable for the link
+        search1 = randrange(1,1025) #Limit avaiable for the link
         search_id_or_name(search1)
 
     elif function == 2:
-        search2 = randrange(1,20) #Limit avaiable for the link
+        search2 = randrange(1,19) #Limit avaiable for the link
         search_type(search2)
 
     elif function == 3:
-        search3 = randrange(1,920) #Limit avaiable for the link
+        search3 = randrange(1,919) #Limit avaiable for the link
         search_move(search3)
 
     elif function == 4:
-        search4 = randrange(1,308) #Limit avaiable for the link
+        search4 = randrange(1,307) #Limit avaiable for the link
         search_ability(search4)
