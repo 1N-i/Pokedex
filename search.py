@@ -8,7 +8,6 @@ def create_data(search_type, search): #Sends data to the functions that called i
         return "error"
     return requested.json()
 
-#-------------------------------------------------------------
 def data_verification(options): #Data verification
     while True:
         try:
@@ -20,7 +19,6 @@ def data_verification(options): #Data verification
         except ValueError:
             print("Invalid option\n")
 
-#-------------------------------------------------------------
 def gen_traslate(generation): #Switch the letter by numbers and region names
     if generation == "generation-i":
         return "Kanto, generation 1"
@@ -40,8 +38,7 @@ def gen_traslate(generation): #Switch the letter by numbers and region names
         return "Galar, generation 8"
     elif generation == "generation-ix":
         return "Paldea, generation 9"
-    
-#-------------------------------------------------------------
+
 def search_id_or_name(search): #Search Pokémon by name or ID
     if isinstance(search, str):
         search = search.lower()
@@ -54,8 +51,10 @@ def search_id_or_name(search): #Search Pokémon by name or ID
         varieties = []
         for variety in data_species["varieties"]:
             varieties.append(variety["pokemon"]["name"])
+
         for i in range(len(varieties)):
             print(f"{i + 1}- {varieties[i].replace("-", " ")}")
+
         a = i + 1
         version = data_verification(range(1, a + 1))
     else:
@@ -64,7 +63,6 @@ def search_id_or_name(search): #Search Pokémon by name or ID
 
     data = create_data("pokemon", varieties[version - 1])
     name = data["name"].replace("-", " ")
-
     print(f"\nID: {data_species["id"]} \nPokémon: {name}") #ID and Name
 
     type1 = data["types"][0]["type"]["name"]
@@ -135,7 +133,6 @@ def search_id_or_name(search): #Search Pokémon by name or ID
             print(f"\nEnding search on '{name}'")
             break
 
-#-------------------------------------------------------------
 def search_type(search): #Search specific type
     if isinstance(search, str):
         search = search.lower()
@@ -202,7 +199,6 @@ def search_type(search): #Search specific type
             print(f"Ending search on '{search}'")
             break
 
-#-------------------------------------------------------------
 def search_move(search): #Search specific move
     if isinstance(search, str):
         search = search.lower().replace(" ", "-")
@@ -257,7 +253,6 @@ def search_move(search): #Search specific move
             print(f"Ending search on '{src_msg}'")
             break
 
-#-------------------------------------------------------------
 def search_ability(search): #Search ability
     if isinstance(search, str):
         search = search.lower().replace(" ", "-")
@@ -286,8 +281,8 @@ def search_ability(search): #Search ability
                     print(f"{pokemon["pokemon"]["name"].replace("-", " ")}")
                     ability_natural += 1
             print(f"That's {ability_natural} Pokémon")
-
             print(f"\nPokémon with '{src_msg}' as a hidden ability:")
+
             hidden_ability = 0
             for pokemon in data["pokemon"]:
                 if pokemon["is_hidden"] == True: #Hidden hability
@@ -299,23 +294,22 @@ def search_ability(search): #Search ability
             print(f"Ending search on '{src_msg}'")
             break
 
-#-------------------------------------------------------------
 def random_page(): #Sends you to a random page
-    from random import randrange #The only one that uses random
-    function = randrange(1,5)
+    from random import randint #The only one that uses random
+    function = randint(1,5)
 
     if function == 1:
-        search1 = randrange(1,1025) #Limit avaiable for the link
+        search1 = randint(1,1025) #Limit avaiable for the link
         search_id_or_name(search1)
 
     elif function == 2:
-        search2 = randrange(1,19) #Limit avaiable for the link
+        search2 = randint(1,19) #Limit avaiable for the link
         search_type(search2)
 
     elif function == 3:
-        search3 = randrange(1,919) #Limit avaiable for the link
+        search3 = randint(1,919) #Limit avaiable for the link
         search_move(search3)
 
     elif function == 4:
-        search4 = randrange(1,307) #Limit avaiable for the link
+        search4 = randint(1,307) #Limit avaiable for the link
         search_ability(search4)
