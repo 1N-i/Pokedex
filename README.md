@@ -42,17 +42,10 @@ The project is organized into specific archives:
 
 ## 🚀 How to Run
 
-1. **Clone the repository:**
-Use the command below to clone the project and enter its folder:
-
-```bash 
-git clone https://github.com/1N-i/Pokedex_PokeAPI.git cd Pokedex_PokeAPI
-```
-
-2. **Install dependencies:**
+1. **Install dependencies:**
    
    This project uses the requests library. You can install it via pip: `pip install requests`
 
-3. **Execute the application:**
+2. **Execute the main menu:**
 
    `python pokedex.py`
